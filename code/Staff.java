@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Staff implements Serializable {
+public class Staff  implements Serializable  {
     private String title;
     private String firstName;
     private String lastName;
