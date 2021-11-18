@@ -1,11 +1,50 @@
-public class Guest {
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.SortedMap;
+
+public class Guest implements Serializable {
     private String firstName;
     private String lastName;
     private String address;
     private int telephone;
+    ArrayList<Guest>guests=new ArrayList<>();
     
     public void createGuest(){
-        
+    Guest guest = new Guest();
+    Scanner scanner = new Scanner(System.in);
+    System.out.println("First name: ");
+    firstName=scanner.nextLine();
+    System.out.println("Last name: ");
+    lastName=scanner.nextLine();
+    System.out.println("Address: ");
+    address=scanner.nextLine();
+    System.out.println("Telephone: ");
+    telephone=scanner.nextInt();
+    try{
+        FileInputStream f =new FileInputStream("guests.bin");
+        ObjectInputStream o = new ObjectInputStream(f);
+        guests=(ArrayList<Guest>)o.readObject();
+
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    } catch (IOException e) {
+        e.printStackTrace();
+    } catch (ClassNotFoundException e) {
+        e.printStackTrace();
+    }
+    guests.add(guest);
+
+    try {
+   FileOutputStream f = new FileOutputStream("guest.bin");
+   ObjectOutputStream o = new ObjectOutputStream(f);
+   o.writeObject(guests);
+    }
+    catch (IOException e) {
+        e.printStackTrace();
+    }
+
+
     }
 
     /**
