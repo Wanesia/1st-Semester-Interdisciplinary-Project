@@ -20,21 +20,13 @@ public class Staff implements Serializable {
         System.out.println("[3][Concierge]");
         System.out.println("[4][Cleaning Staff]");
         String s = scan.next();
-        if (s.equals("1")) {
-            title = "General Manager";
+        switch (s) {
+            case "1" -> title = "General Manager";
+            case "2" -> title = "Wait Staff";
+            case "3" -> title = "Concierge";
+            case "4" -> title = "Cleaning Staff";
+            default -> System.out.println("Please pick one of the available job titles");
         }
-            else if (s.equals("2")) {
-                title = "Wait Staff";
-                }
-                else if (s.equals("3")) {
-                    title = "Concierge";
-                    }
-                    else if (s.equals("4")){
-                        title = "Cleaning Staff";
-                        }
-                        else {
-                            System.out.println("Please pick one of the available job titles");
-                            }
         //title = scan.next();
         System.out.println("First Name: ");
         firstName = scan.next();
@@ -44,21 +36,17 @@ public class Staff implements Serializable {
         telephone = scan.nextInt();
 //        System.out.println("Salary(DKK/Year): " + salary);
 
-        if (title.equals("General Manager")) {
-            salary = 360000;
+        switch (title) {
+            case "General Manager" -> salary = 360000;
+            case "Wait Staff" -> salary = 337000;
+            case "Concierge" -> salary = 326800;
+            case "Cleaning Staff" -> salary = 291000;
+            default -> System.out.println("No salary to display");
         }
-            else if (title.equals("Wait Staff")) {
-                salary = 337000;
-            }
-                else if (title.equals("Concierge")) {
-                    salary = 326800;
-                }
-                    else if (title.equals("Cleaning Staff")){
-                        salary = 291000;
-                    }
-                        else{
-                            System.out.println("No salary to display");
-                        }
+
+        System.out.println(toString());
+
+
         //salary = scan.nextDouble();
 
         try {
@@ -73,6 +61,7 @@ public class Staff implements Serializable {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
+
         staffs.add(staff);
 
         try {
@@ -88,12 +77,12 @@ public class Staff implements Serializable {
 
     @Override
     public String toString() {
-        return "Staff\n" +
+        return "Staff Info\n" +
                 "Title: " + title + "\n" +
                 "First Name: " + firstName + '\n' +
                 "Last Name: " + lastName + "\n" +
                 "Telephone: " + telephone + "\n" +
-                "Salary: " + salary + "\n";
+                "Yearly Salary: " + salary + "DKK" + "\n";
     }
 
     public String getTitle() {

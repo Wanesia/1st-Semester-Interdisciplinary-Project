@@ -1,10 +1,4 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -33,7 +27,7 @@ public class Room implements Serializable {
         try{
             FileInputStream f = new FileInputStream("rooms.bin");
             ObjectInputStream ois = new ObjectInputStream(f);
-            rooms=(ArrayList<Room>)ois.readObject();
+            rooms = (ArrayList<Room>)ois.readObject();
         }
         catch(IOException e){
             e.printStackTrace();
@@ -41,6 +35,7 @@ public class Room implements Serializable {
         catch(ClassNotFoundException e){
             e.printStackTrace();
         }
+
         rooms.add(room);
         try{
             FileOutputStream f = new FileOutputStream("rooms.bin");
