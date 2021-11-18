@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Room implements Serializable {
+public class Room extends Guest implements Serializable {
     private int roomNumber;
     private int floor;
     private int numberOfBed;

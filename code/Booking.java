@@ -1,3 +1,4 @@
-public class Booking {
+public class Booking extends Room {
+    private int bookingDays;
     
 }
