@@ -43,8 +43,16 @@ public class Guest implements Serializable {
     catch (IOException e) {
         e.printStackTrace();
     }
+    }
 
-
+    @Override
+    public String toString() {
+        return "Guest\n" +
+                "First name: " + firstName + "\n" +
+                "Last name: " + lastName + "\n" +
+                "Address: " + address + "\n" +
+                "Telephone: " + telephone + "\n"+
+                "Guests: " + guests+"\n";
     }
 
     /**
