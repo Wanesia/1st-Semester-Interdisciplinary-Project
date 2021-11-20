@@ -11,6 +11,7 @@ public class Main{
         Staff staff = new Staff();
 //        staff.registerStaff();
 //        System.out.println(staff);
+
         int ss;
 
         do {
@@ -19,7 +20,7 @@ public class Main{
             System.out.println("[1][Book Room]");
             System.out.println("[2][Edit Booking]");
             System.out.println("[3][Register Staff]");
-            System.out.println("[4][Edit Staff]");
+            System.out.println("[4][Display Staff]");
             System.out.println("[5][Exit Program]");
             ss = input.nextInt();
             switch (ss) {
@@ -36,7 +37,7 @@ public class Main{
                     break;
                 }
                 case 4 -> {
-                    System.out.println("Coming soon");
+                    staff.displayStaff();
                     break;
                 }
                 case 5 -> {
