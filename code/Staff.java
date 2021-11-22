@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Staff  implements Serializable  {
+public class Staff implements Serializable  {
     private String title;
     private String firstName;
     private String lastName;
@@ -10,9 +10,22 @@ public class Staff  implements Serializable  {
     private double salary;
     ArrayList<Staff> staffs = new ArrayList<>();
 
+    Staff staff;
+
+    public Staff() {
+
+    }
+
+    public Staff(String title, String firstName, String lastName, int telephone, double salary) {
+        this.title = title;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.telephone = telephone;
+        this.salary = salary;
+    }
 
     public void registerStaff() {
-        Staff staff = new Staff();
+        staff = new Staff();
         Scanner scan = new Scanner(System.in);
         System.out.println("Pick Your Title: ");
         System.out.println("[1][General Manager]");
@@ -44,35 +57,56 @@ public class Staff  implements Serializable  {
             default -> System.out.println("No salary to display");
         }
 
-        System.out.println(toString());
+        System.out.println(this);
 
 
         //salary = scan.nextDouble();
 
+        staffs.add(staff);
+
         try {
-            FileInputStream f = new FileInputStream("staff.bin");
-            ObjectInputStream ois = new ObjectInputStream(f);
-            staffs = (ArrayList<Staff>)ois.readObject();
+            FileOutputStream fileOut = new FileOutputStream("Staff.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(staff);
+            out.close();
+            fileOut.close();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
 
-        staffs.add(staff);
 
+
+//        try {
+//            FileInputStream fileIn = new FileInputStream("Staff.ser");
+//            ObjectInputStream in = new ObjectInputStream(fileIn);
+//            staff = (Staff) in.readObject();
+//            in.close();
+//            fileIn.close();
+//        }
+//        catch (IOException | ClassNotFoundException e) {
+//            e.printStackTrace();
+//        }
+    }
+
+
+    public void displayStaff() {
         try {
-            FileOutputStream f = new FileOutputStream("staff.bin");
-            ObjectOutputStream out = new ObjectOutputStream(f);
-            out.writeObject(staffs);
+            FileInputStream fileIn = new FileInputStream("Staff.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            staff = (Staff) in.readObject();
+            in.close();
+            fileIn.close();
         }
-        catch (IOException e) {
+        catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
+        for (int i = 0; i < staffs.size(); i++) {
+            System.out.println(staffs.get(i));
+        }
     }
 
     @Override
