@@ -1,16 +1,32 @@
+import java.awt.print.Book;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main{
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        Room room=new Room();
-//        room.createRoom();
-//        System.out.println(room);
 
-        Staff staff = new Staff();
-//        staff.registerStaff();
-//        System.out.println(staff);
+        Booking booking = new Booking();
+        Database database = new Database();
+        //Add rooms to roomArray
+        database.roomArray.add(database.singleBed1);
+        database.roomArray.add(database.singleBed2);
+        database.roomArray.add(database.doubleBed1);
+        database.roomArray.add(database.doubleBed2);
+        database.roomArray.add(database.suite1);
+        database.roomArray.add(database.suite2);
+        database.serializeRoom();
+
+        // Create Staff: 1 General Manager, 1 Receptionist, 1 Cleaning Lady
+        //               1 Accountant
+        Staff s = new Staff();
+
+        // Create Guests: 8 Guests
+        Guest guest = new Guest();
 
         int ss;
 
@@ -20,27 +36,35 @@ public class Main{
             System.out.println("[1][Book Room]");
             System.out.println("[2][Edit Booking]");
             System.out.println("[3][Register Staff]");
-            System.out.println("[4][Display Staff]");
+            System.out.println("[4][Edit Staff]");
             System.out.println("[5][Exit Program]");
             ss = input.nextInt();
             switch (ss) {
-                case 1 -> {
-                    room.createRoom();
+                case 1 : {
+                    System.out.println("Register Guest: ");
+                    guest.createGuest();
+                    database.guests.add(guest);
+                    database.serializeGuests();
+                    database.displayRoom();
+                    booking.bookRoom(database.roomArray, database.guests);
+                    database.bookings.add(booking);
                     break;
                 }
-                case 2 -> {
+                case 2 : {
                     System.out.println("Coming Soon");
                     break;
                 }
-                case 3 -> {
-                    staff.registerStaff();
+                case 3 : {
+                    s = s.registerStaff();
+                    database.staffArray.add(s);
+                    database.serializeStaff();
                     break;
                 }
-                case 4 -> {
-                    staff.displayStaff();
+                case 4 : {
+                    database.displayStaff();
                     break;
                 }
-                case 5 -> {
+                case 5 : {
                     System.exit(0);
                     break;
                 }
@@ -49,11 +73,7 @@ public class Main{
         } while (ss != 5);
 
 
-
-
-
-
-
-
     }
+
+
 }

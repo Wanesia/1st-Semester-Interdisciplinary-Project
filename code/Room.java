@@ -8,48 +8,38 @@ public class Room extends Guest implements Serializable {
     private int numberOfBed;
     private boolean internet;
     private double pricePerNight;
-    ArrayList<Room> rooms=new ArrayList<Room>();
+    private boolean booked = false;
+//    ArrayList<Room> rooms=new ArrayList<Room>();
 
-    public void createRoom() {
-        Room room = new Room();
-        Scanner scan = new Scanner(System.in);
-        System.out.print("Room number:");
-        roomNumber=scan.nextInt();
-        System.out.print("Floor");
-        floor=scan.nextInt();
-        System.out.print("Number of");
-        numberOfBed=scan.nextInt();
-        System.out.print("Internet access(true/false)");
-        internet=scan.nextBoolean();
-        System.out.print("Price per night: ");
-        pricePerNight=scan.nextDouble();
-        System.out.println("Room created successfully");
-        try{
-            FileInputStream f = new FileInputStream("rooms.bin");
-            ObjectInputStream ois = new ObjectInputStream(f);
-            rooms = (ArrayList<Room>)ois.readObject();
-        }
-        catch(IOException e){
-            e.printStackTrace();
-        }
-        catch(ClassNotFoundException e){
-            e.printStackTrace();
-        }
-
-        rooms.add(room);
-        try{
-            FileOutputStream f = new FileOutputStream("rooms.bin");
-            ObjectOutputStream out = new ObjectOutputStream(f);
-            out.writeObject(rooms);
-        }
-        catch (IOException e){
-            e.printStackTrace();
-        }
-
+    public Room(int roomNumber, int floor, int numberOfBed, boolean internet, double pricePerNight, boolean booked) {
+        this.roomNumber = roomNumber;
+        this.floor = floor;
+        this.numberOfBed = numberOfBed;
+        this.internet = internet;
+        this.pricePerNight = pricePerNight;
+        this.booked = booked;
     }
+
+
+    boolean isBooked()
+    {
+        return booked;
+    }
+
+    public void setBooked(boolean booked) {
+        this.booked = booked;
+    }
+
     public String toString() {
-        return "Room "+roomNumber+" floor "+floor;
+        return "\nRoom" + "\n" + "Roomnumber: " + roomNumber +
+                "\nFloor: " + floor +
+                "\nNumber Of Beds: " + numberOfBed +
+                "\nInternet: " + internet +
+                "\nPrice Per Night: " + pricePerNight + "DKK" +
+                "\nCurrently booked: " + booked +
+                "\n";
     }
+
     /**
      * @return int return the roomNumber
      */

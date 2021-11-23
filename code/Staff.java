@@ -8,9 +8,9 @@ public class Staff implements Serializable  {
     private String lastName;
     private int telephone;
     private double salary;
-    ArrayList<Staff> staffs = new ArrayList<>();
+    @Serial
+    private static final long serialVersionUID = 1234;
 
-    Staff staff;
 
     public Staff() {
 
@@ -24,8 +24,7 @@ public class Staff implements Serializable  {
         this.salary = salary;
     }
 
-    public void registerStaff() {
-        staff = new Staff();
+    public Staff registerStaff() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Pick Your Title: ");
         System.out.println("[1][General Manager]");
@@ -34,79 +33,38 @@ public class Staff implements Serializable  {
         System.out.println("[4][Cleaning Staff]");
         String s = scan.next();
         switch (s) {
-            case "1" -> title = "General Manager";
-            case "2" -> title = "Wait Staff";
-            case "3" -> title = "Concierge";
-            case "4" -> title = "Cleaning Staff";
-            default -> System.out.println("Please pick one of the available job titles");
+            case "1" : {
+                setTitle("General Manager");
+                setSalary(360000);
+                break;
+            }
+            case "2" : {
+                setTitle("Wait Staff");
+                setSalary(337000);
+                break;
+            }
+            case "3" : {
+                setTitle("Concierge");
+                setSalary(326800);
+                break;
+            }
+            case "4" : {
+                setTitle("Cleaning Staff");
+                setSalary(291000);
+                break;
+            }
+            default : System.out.println("Please pick one of the available job titles");
         }
-        //title = scan.next();
         System.out.println("First Name: ");
-        firstName = scan.next();
+        setFirstName(scan.next());
         System.out.println("Last Name: ");
-        lastName = scan.next();
+        setLastName(scan.next());
         System.out.println("Phone Number: ");
-        telephone = scan.nextInt();
-//        System.out.println("Salary(DKK/Year): " + salary);
-
-        switch (title) {
-            case "General Manager" -> salary = 360000;
-            case "Wait Staff" -> salary = 337000;
-            case "Concierge" -> salary = 326800;
-            case "Cleaning Staff" -> salary = 291000;
-            default -> System.out.println("No salary to display");
-        }
+        setTelephone(scan.nextInt());
 
         System.out.println(this);
 
-
-        //salary = scan.nextDouble();
-
-        staffs.add(staff);
-
-        try {
-            FileOutputStream fileOut = new FileOutputStream("Staff.ser");
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
-            out.writeObject(staff);
-            out.close();
-            fileOut.close();
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-
-//        try {
-//            FileInputStream fileIn = new FileInputStream("Staff.ser");
-//            ObjectInputStream in = new ObjectInputStream(fileIn);
-//            staff = (Staff) in.readObject();
-//            in.close();
-//            fileIn.close();
-//        }
-//        catch (IOException | ClassNotFoundException e) {
-//            e.printStackTrace();
-//        }
-    }
-
-
-    public void displayStaff() {
-        try {
-            FileInputStream fileIn = new FileInputStream("Staff.ser");
-            ObjectInputStream in = new ObjectInputStream(fileIn);
-            staff = (Staff) in.readObject();
-            in.close();
-            fileIn.close();
-        }
-        catch (IOException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-
-        for (int i = 0; i < staffs.size(); i++) {
-            System.out.println(staffs.get(i));
-        }
+        return this;
     }
 
     @Override
