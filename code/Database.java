@@ -46,10 +46,12 @@ public class Database {
         Scanner scan = new Scanner(System.in);
         String s = scan.next();
 
+
         for (Staff staff : staffArray) {
-            if (staff != null && s.equals(staff.getFirstName())) {
+            if (staff != null && s.equalsIgnoreCase(staff.getFirstName())) {
                 System.out.println("Change staff last name: ");
                 staff.setLastName(scan.next());
+                System.out.println(staff.getLastName());
 
                 System.out.println("Change work title: ");
                 System.out.println("Pick Your Title: ");
@@ -57,18 +59,35 @@ public class Database {
                 System.out.println("[2][Wait Staff]");
                 System.out.println("[3][Concierge]");
                 System.out.println("[4][Cleaning Staff]");
-                //String s = scan.next();
+                s = scan.next();
                 if ("1".equals(s)) {
                     staff.setTitle("General Manager");
+                    System.out.println(staff.getTitle());
                 } else if ("2".equals(s)) {
                     staff.setTitle("Wait Staff");
+                    System.out.println(staff.getTitle());
                 } else if ("3".equals(s)) {
                     staff.setTitle("Concierge");
+                    System.out.println(staff.getTitle());
                 } else if ("4".equals(s)) {
                     staff.setTitle("Cleaning Staff");
+                    System.out.println(staff.getTitle());
                 } else {
                     System.out.println("Please pick one of the available job titles");
                 }
+
+                int ss;
+                System.out.println("");
+                System.out.println("Change phone number: ");
+                ss = scan.nextInt();
+                staff.setTelephone(ss);
+                System.out.println(staff.getTelephone());
+                System.out.println("Change Salary: ");
+                ss = scan.nextInt();
+                staff.setSalary(ss);
+                System.out.println(staff.getSalary());
+                System.out.println("");
+                System.out.println(staff);
             }
         }
 
