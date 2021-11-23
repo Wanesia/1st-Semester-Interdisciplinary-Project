@@ -21,6 +21,7 @@ public class Main{
         database.roomArray.add(database.suite2);
         database.serializeRoom();
 
+
         // Create Staff: 1 General Manager, 1 Receptionist, 1 Cleaning Lady
         //               1 Accountant
         Staff s = new Staff();
@@ -62,6 +63,9 @@ public class Main{
                 }
                 case 4 : {
                     database.displayStaff();
+                    System.out.println("Search for staff by first name: ");
+                    database.editStaff();
+                    database.serializeStaff();
                     break;
                 }
                 case 5 : {

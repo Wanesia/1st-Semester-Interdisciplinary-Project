@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Database {
 
@@ -39,6 +40,38 @@ public class Database {
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+    }
+
+    public void editStaff() {
+        Scanner scan = new Scanner(System.in);
+        String s = scan.next();
+
+        for (Staff staff : staffArray) {
+            if (staff != null && s.equals(staff.getFirstName())) {
+                System.out.println("Change staff last name: ");
+                staff.setLastName(scan.next());
+
+                System.out.println("Change work title: ");
+                System.out.println("Pick Your Title: ");
+                System.out.println("[1][General Manager]");
+                System.out.println("[2][Wait Staff]");
+                System.out.println("[3][Concierge]");
+                System.out.println("[4][Cleaning Staff]");
+                //String s = scan.next();
+                if ("1".equals(s)) {
+                    staff.setTitle("General Manager");
+                } else if ("2".equals(s)) {
+                    staff.setTitle("Wait Staff");
+                } else if ("3".equals(s)) {
+                    staff.setTitle("Concierge");
+                } else if ("4".equals(s)) {
+                    staff.setTitle("Cleaning Staff");
+                } else {
+                    System.out.println("Please pick one of the available job titles");
+                }
+            }
+        }
+
     }
 
     public ArrayList getStaffArray() {
@@ -92,7 +125,7 @@ public class Database {
 
 
     public void serializeRoom() throws IOException {
-        FileOutputStream fileOut = new FileOutputStream("Staff.ser");
+        FileOutputStream fileOut = new FileOutputStream("Room.ser");
         ObjectOutputStream out = new ObjectOutputStream(fileOut);
         out.writeObject(roomArray);
         out.close();
@@ -102,7 +135,7 @@ public class Database {
 
         public void displayRoom() {
            try {
-                FileInputStream fileIn = new FileInputStream("Staff.ser");
+                FileInputStream fileIn = new FileInputStream("Room.ser");
                 ObjectInputStream in = new ObjectInputStream(fileIn);
                 roomArray = (ArrayList<Room>) in.readObject();
                 System.out.println(roomArray.size());

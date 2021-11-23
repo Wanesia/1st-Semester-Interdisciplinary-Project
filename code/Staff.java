@@ -24,6 +24,9 @@ public class Staff implements Serializable  {
         this.salary = salary;
     }
 
+
+
+
     public Staff registerStaff() {
         Scanner scan = new Scanner(System.in);
         System.out.println("Pick Your Title: ");
