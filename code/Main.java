@@ -35,10 +35,12 @@ public class Main{
             Scanner input = new Scanner(System.in);
             System.out.println("What would you like to do? ");
             System.out.println("[1][Book Room]");
-            System.out.println("[2][Edit Booking]");
-            System.out.println("[3][Register Staff]");
-            System.out.println("[4][Edit Staff]");
-            System.out.println("[5][Exit Program]");
+            System.out.println("[2][Change Price Per Night]");
+            System.out.println("[3][Edit Booking]");
+            System.out.println("[4][Edit guest info]");
+            System.out.println("[5][Register Staff]");
+            System.out.println("[6][Edit Staff]");
+            System.out.println("[7][Exit Program]");
             ss = input.nextInt();
             switch (ss) {
                 case 1 : {
@@ -46,35 +48,47 @@ public class Main{
                     guest.createGuest();
                     database.guests.add(guest);
                     database.serializeGuests();
-                    database.displayRoom();
-                    booking.bookRoom(database.roomArray, database.guests);
-                    database.bookings.add(booking);
+                    //database.displayRoom();
+                    //booking.bookRoom(database.roomArray, database.guests);
+                    //database.bookings.add(booking);
                     break;
                 }
                 case 2 : {
-                    System.out.println("Coming Soon");
+                    //database.displayRoom();
+                    database.changeRoomPrice();
                     break;
                 }
                 case 3 : {
+                    System.out.println("Coming Soon");
+                    break;
+                }
+                case 4 : {
+                    database.displayGuest();
+                    database.editGuest();
+                    database.serializeGuests();
+                    database.displayGuest();
+                    break;
+                }
+                case 5 : {
                     s = s.registerStaff();
                     database.staffArray.add(s);
                     database.serializeStaff();
                     break;
                 }
-                case 4 : {
+                case 6 : {
                     database.displayStaff();
                     System.out.println("Search for staff by first name: ");
                     database.editStaff();
                     database.serializeStaff();
                     break;
                 }
-                case 5 : {
+                case 7 : {
                     System.exit(0);
                     break;
                 }
             }
 
-        } while (ss != 5);
+        } while (ss != 7);
 
 
     }

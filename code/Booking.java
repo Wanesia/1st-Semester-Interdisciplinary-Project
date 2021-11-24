@@ -30,17 +30,15 @@ public class Booking extends Database {
         System.out.println("Which room would you like to book?");
         Scanner scan = new Scanner(System.in);
         System.out.println("Please type in the room number: ");
-        String s = scan.next();
-        for (Room room : roomList) {
-            if (s.equals(room.getRoomNumber())) {
+        int roomNumber = scan.nextInt();
+        for (Room room : roomArray) {
+            if (room != null && roomNumber == room.getRoomNumber()) {
 
                 this.room = room;
                 room.setBooked(true);
             }
 
         }
-
-
 
         System.out.println("Who is booking the room?");
         String ss = scan.next();
