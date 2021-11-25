@@ -5,11 +5,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main{
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, ParseException {
 
 
         Booking booking = new Booking();
