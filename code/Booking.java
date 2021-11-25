@@ -18,25 +18,26 @@ import java.time.temporal.ChronoUnit;
 
 public class Booking extends Database {
 
-    private Date startDate;
-    private Date endDate;
+    private String startDate;
+    private String endDate;
     Room room;
     Guest guest;
+    long daysBetween;
     //    ArrayList<Booking> bookings =new ArrayList<Booking>();
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public String getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
@@ -44,12 +45,15 @@ public class Booking extends Database {
 
     }
 
-    public Booking(Date startDate, Date endDate, Guest guest, Room room) {
+    public Booking(String startDate, String endDate, Guest guest, Room room, long daysBetween) {
         this.startDate = startDate;
         this.endDate = endDate;
         this.guest = guest;
         this.room = room;
+        this.daysBetween = daysBetween;
     }
+
+    //    Booking booking = new Booking();
     public Booking bookRoom(ArrayList<Room> roomList, ArrayList<Guest> guestList) throws ParseException {
 
         System.out.println("Which room would you like to book?");
@@ -71,31 +75,61 @@ public class Booking extends Database {
                 this.guest = guest;
             }
         }
-        System.out.println("Enter start date: (day/month/year)");
-        String s0 = scan.next();
-        String sDate = s0;
-        Date date1 = new SimpleDateFormat("dd/MM/yy").parse(sDate);
-        this.startDate=date1;
+//        System.out.println("Enter start date: (day/month/year)");
+//        String s0 = scan.next();
+//        String sDate = s0;
+//        Date date1 = new SimpleDateFormat("dd/MM/yy").parse(sDate);
+//        this.startDate=date1;
+//
+//
+//        System.out.println("Enter end date: (day/month/year)");
+//        String s1 = scan.next();
+//        String s1Date = s1;
+//        Date date2=new SimpleDateFormat("dd/MM/yy").parse(s1Date);
+//        this.endDate=date2;
+
+        System.out.println("Enter start date");
+        System.out.println("Enter start year: ");
+        int d1 = scan.nextInt();
+        System.out.println("Enter month: ");
+        int d2 = scan.nextInt();
+        System.out.println("Enter day: ");
+        int d3 = scan.nextInt();
+        LocalDate ld1 = LocalDate.of(d1, d2, d3);
+
+        String date4 = d1 + ", " + d2 + ", " + d3;
+
+        System.out.println("Enter end date");
+        System.out.println("Enter year: ");
+        d1 = scan.nextInt();
+        System.out.println("Enter month: ");
+        d2 = scan.nextInt();
+        System.out.println("Enter day: ");
+        d3 = scan.nextInt();
+        LocalDate ld2 = LocalDate.of(d1, d2, d3);
+
+        String date5 = d1 + ", " + d2 + ", " + d3;
 
 
-        System.out.println("Enter end date: (day/month/year)");
-        String s1 = scan.next();
-        String s1Date = s1;
-        Date date2=new SimpleDateFormat("dd/MM/yy").parse(s1Date);
-        this.endDate=date2;
+        this.setStartDate(date4);
+        this.setEndDate(date5);
+
+        System.out.println("Number of nights: ");
+        daysBetween = ChronoUnit.DAYS.between(ld1, ld2);
+        System.out.println(Math.abs(daysBetween));
 
 
-      System.out.println(this);
-            return this;
-}
+        System.out.println(this);
+        return this;
+    }
 
 
     Random rand = new Random(); //instance of random class
 
-
     @Override
     public String toString() {
         return "Booking#" + rand.nextInt() +
+                "\nNumber of nights: " +daysBetween+
                 "\nStart Date: " + startDate +
                 "\nEnd Date: " + endDate +
                 "\nRoom: " + room +
