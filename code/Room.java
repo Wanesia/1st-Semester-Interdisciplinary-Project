@@ -20,6 +20,31 @@ public class Room extends Guest implements Serializable {
         this.booked = booked;
     }
 
+    public Room() {
+
+    }
+
+
+    public Room createRoom() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Room Number: ");
+        roomNumber = scanner.nextInt();
+        System.out.println("Floor: ");
+        floor = scanner.nextInt();
+        System.out.println("Number of Beds: ");
+        numberOfBed = scanner.nextInt();
+        System.out.println("Internet Access(true/false): ");
+        internet = scanner.nextBoolean();
+        System.out.println("Price Per Night: ");
+        pricePerNight = scanner.nextInt();
+        System.out.println("Is booked?(true/false): ");
+        booked = scanner.nextBoolean();
+
+        System.out.println(this);
+
+        return this;
+    }
+
 
     boolean isBooked()
     {
