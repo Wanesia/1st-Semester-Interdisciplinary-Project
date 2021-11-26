@@ -9,7 +9,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main{
+public class  Main{
     public static void main(String[] args) throws IOException, ParseException {
 
 
@@ -73,7 +73,9 @@ public class Main{
                     break;
                 }
                 case 4 : {
-                    System.out.println("Coming Soon");
+
+                    booking.extendBooking();
+
                     break;
                 }
                 case 5 : {

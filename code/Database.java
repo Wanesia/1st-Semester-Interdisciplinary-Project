@@ -1,10 +1,25 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
-public class Database {
+public class Database   {
 
     private static final long serialVersionUID = 1234;
+
+    Random rand = new Random();
+
+    private int bookingNumber = rand.nextInt(1000);;
+
+
+
+    public int getBookingNumber() {
+        return bookingNumber;
+    }
+
+    public void setBookingNumber(int bookingNumber) {
+        this.bookingNumber = bookingNumber;
+    }
 
 
     // ArrayList for StaffObjects
@@ -146,6 +161,30 @@ public class Database {
             }
         }
     }
+//    public void extendBooking(){
+//        System.out.println("All current bookings:");
+//        System.out.println(bookingNumber);
+//        Scanner scan = new Scanner(System.in);
+//        System.out.println("Which booking would you like to extend");
+//        int booking = scan.nextInt();
+//
+//        for (Booking room : bookings){
+//            if(booking == bookingNumber){ //bookingNumber
+//                System.out.println("Extend your booking by how many days");
+//                int extend;
+//                extend = scan.nextInt();
+//
+//
+//                System.out.println("bleble");
+//                //System.out.println(room);
+//            } else{
+//                System.out.println("type correct booking number");
+//            }
+//
+//
+//        }
+//        //System.out.println(booking);
+//    }
 
     //////////////////////\\\\\\\\\\\\\\\\\\\\\\\\\\
     // Booking Method
@@ -209,6 +248,30 @@ public class Database {
             }
         }
     }
+//    public void extendBooking(){
+//        Scanner scan = new Scanner(System.in);
+//        System.out.println("Which booking would you like to extend");
+//        System.out.println("please type booking number");
+//        int booking = scan.nextInt();
+//        for (Room room : roomArray){
+//            if(room != null && booking == room.getBookingNumber());
+//            System.out.println("Extend your booking by days");
+//            int extend;
+//            extend = scan.nextInt();
+//            room.setBookingNumber(extend);
+//            System.out.println(room.getBookingNumber());
+//            System.out.println(booking);
+//            System.out.println(room);
+//        }
+//       //  System.out.println(bookingNumber);
+//
+//
+//   }
+
+
+//    public void extendBooking(){
+//
+//    }
 
     public ArrayList<Room> getRoomArray() {
         return roomArray;

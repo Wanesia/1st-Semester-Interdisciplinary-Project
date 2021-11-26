@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Room extends Guest implements Serializable {
@@ -9,6 +10,8 @@ public class Room extends Guest implements Serializable {
     private boolean internet;
     private double pricePerNight;
     private boolean booked = false;
+
+
 //    ArrayList<Room> rooms=new ArrayList<Room>();
 
     public Room(int roomNumber, int floor, int numberOfBed, boolean internet, double pricePerNight, boolean booked) {
@@ -135,5 +138,6 @@ public class Room extends Guest implements Serializable {
     public void setPricePerNight(double pricePerNight) {
         this.pricePerNight = pricePerNight;
     }
+
 
 }

@@ -7,6 +7,7 @@ import java.time.temporal.ChronoUnit;
 
 
 public class Days{
+
     public static long getDifferenceDays(Date d1, Date d2) {
         long diff = d2.getTime() - d1.getTime();
         return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);

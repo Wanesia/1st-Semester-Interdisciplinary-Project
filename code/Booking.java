@@ -23,7 +23,21 @@ public class Booking extends Database {
     Room room;
     Guest guest;
     long daysBetween;
-    //    ArrayList<Booking> bookings =new ArrayList<Booking>();
+
+    Random rand = new Random();
+
+    private int bookingNumber = rand.nextInt(1000);;
+    private LocalDate startDateLD;
+
+
+    public int getBookingNumber() {
+        return bookingNumber;
+    }
+
+    public void setBookingNumber(int bookingNumber) {
+        this.bookingNumber = bookingNumber;
+    }
+        ArrayList<Booking> bookings =new ArrayList<Booking>();
 
     public String getStartDate() {
         return startDate;
@@ -53,7 +67,7 @@ public class Booking extends Database {
         this.daysBetween = daysBetween;
     }
 
-    //    Booking booking = new Booking();
+     //  Booking booking = new Booking();
     public Booking bookRoom(ArrayList<Room> roomList, ArrayList<Guest> guestList) throws ParseException {
 
         System.out.println("Which room would you like to book?");
@@ -96,6 +110,7 @@ public class Booking extends Database {
         System.out.println("Enter day: ");
         int d3 = scan.nextInt();
         LocalDate ld1 = LocalDate.of(d1, d2, d3);
+        this.setStartDateLD(ld1);
 
         String date4 = d1 + ", " + d2 + ", " + d3;
 
@@ -123,12 +138,53 @@ public class Booking extends Database {
         return this;
     }
 
+    private void setStartDateLD(LocalDate ld1) {
+        this.startDateLD = ld1;
+    }
+    public LocalDate getStartDateLD(){
+        return this.startDateLD;
+    }
+    // int bookingNumber = rand.nextInt(1000);
 
-    Random rand = new Random(); //instance of random class
+    public void extendBooking() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("All current bookings:");
+        System.out.println(bookingNumber);
+        System.out.println("Which booking would you like to extend");
+        int booking = scan.nextInt();
+
+if(booking == bookingNumber) {
+    System.out.println("Enter end date");
+    System.out.println("Enter year: ");
+    int d1 = scan.nextInt();
+    System.out.println("Enter month: ");
+    int d2 = scan.nextInt();
+    System.out.println("Enter day: ");
+    int d3 = scan.nextInt();
+    LocalDate ld2 = LocalDate.of(d1, d2, d3);
+
+    String date5 = d1 + ", " + d2 + ", " + d3;
+
+    this.setEndDate(date5);
+    daysBetween = ChronoUnit.DAYS.between(this.getStartDateLD(), ld2);
+
+    System.out.println("New number of nights is " + Math.abs(daysBetween) + " extended booking starts at " + startDate + " extended booking finishes at " +  endDate);
+} else {
+    System.out.println("insert correct booking number");
+}
+
+    }
+
+
+
+
+
+
+
 
     @Override
     public String toString() {
-        return "Booking#" + rand.nextInt() +
+        return "Booking#" +  bookingNumber +
                 "\nNumber of nights: " +daysBetween+
                 "\nStart Date: " + startDate +
                 "\nEnd Date: " + endDate +

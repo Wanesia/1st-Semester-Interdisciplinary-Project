@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.SortedMap;
 
-public class Guest implements Serializable  {
+public class Guest   implements Serializable   {
     private String firstName;
     private String lastName;
     private String address;
@@ -112,5 +112,8 @@ public class Guest implements Serializable  {
     public void setTelephone(int telephone) {
         this.telephone = telephone;
     }
+
+
+
 
 }
