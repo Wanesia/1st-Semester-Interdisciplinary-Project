@@ -76,7 +76,6 @@ public class Booking extends Database {
         int roomNumber = scan.nextInt();
         for (Room room : roomArray) {
             if (room != null && roomNumber == room.getRoomNumber()) {
-
                 this.room = room;
                 room.setBooked(true);
             }
@@ -148,8 +147,8 @@ public class Booking extends Database {
 
     public void extendBooking() {
         Scanner scan = new Scanner(System.in);
-        System.out.println("All current bookings:");
-        System.out.println(bookingNumber);
+        //System.out.println("All current bookings:");
+        //System.out.println(bookingNumber);
         System.out.println("Which booking would you like to extend");
         int booking = scan.nextInt();
 
@@ -174,12 +173,6 @@ if(booking == bookingNumber) {
 }
 
     }
-
-
-
-
-
-
 
 
     @Override

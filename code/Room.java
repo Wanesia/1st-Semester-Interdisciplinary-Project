@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Room extends Guest implements Serializable {
+public class Room implements Serializable {
     private int roomNumber;
     private int floor;
     private int numberOfBed;

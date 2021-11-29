@@ -8,9 +8,11 @@ import java.io.ObjectInputStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.temporal.*;
+import java.time.temporal.ChronoUnit;
 
 public class  Main{
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args) throws IOException, ParseException, ClassNotFoundException {
 
 
         Booking booking = new Booking();
@@ -57,6 +59,7 @@ public class  Main{
                     database.displayRoom();
                     booking.bookRoom(database.roomArray, database.guests);
                     database.bookings.add(booking);
+                    database.serializeBooking();
                     break;
                 }
                 case 2 : {
@@ -73,8 +76,11 @@ public class  Main{
                     break;
                 }
                 case 4 : {
-
+                    System.out.println("All current bookings:");
+                    database.displayBooking();
                     booking.extendBooking();
+                    database.serializeBooking();
+                    database.displayBooking();
 
                     break;
                 }

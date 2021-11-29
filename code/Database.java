@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Database   {
+public class Database implements Serializable  {
 
     private static final long serialVersionUID = 1234;
 
@@ -194,6 +194,16 @@ public class Database   {
         out.writeObject(bookings);
         out.close();
         fileOut.close();
+    }
+
+    public void displayBooking() throws IOException, ClassNotFoundException {
+        FileInputStream fileIn = new FileInputStream("Bookings.ser");
+        ObjectInputStream in = new ObjectInputStream(fileIn);
+        bookings = (ArrayList<Booking>) in.readObject();
+        System.out.println(bookings.size());
+        System.out.println(bookings);
+        in.close();
+        fileIn.close();
     }
 
 
