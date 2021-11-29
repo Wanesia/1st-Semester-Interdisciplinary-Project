@@ -37,7 +37,14 @@ public class  Main{
         Guest guest = new Guest();
 
         int ss;
-
+        System.out.println("__________________________________________________________________________________");
+        System.out.println("|  _    _  ____ _______ ______ _          _____  _               ______           |");
+        System.out.println("| | |  | |/ __ |__   __|  ____| |        |  __ \\| |        /\\   |___  /   /\\      |");
+        System.out.println("| | |__| | |  | | | |  | |__  | |        | |__) | |       /  \\     / /   /  \\     |");
+        System.out.println("| |  __  | |  | | | |  |  __| | |        |  ___/| |      / /\\ \\   / /   / /\\ \\    |");
+        System.out.println("| | |  | | |__| | | |  | |____| |____    | |    | |____ / ____ \\ / /__ / ____ \\   |");
+        System.out.println("| |_|  |_|\\____/  |_|  |______|______|   |_|    |______/_/    \\_/_____/_/    \\_\\  |");
+        System.out.println("|_________________________________________________________________________________|");
         do {
             Scanner input = new Scanner(System.in);
             System.out.println("What would you like to do? ");

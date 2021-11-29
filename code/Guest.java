@@ -10,19 +10,36 @@ public class Guest   implements Serializable   {
     private int telephone;
 //    ArrayList<Guest>guests=new ArrayList<>();
     
-    public Guest createGuest(){
-    //Guest guest = new Guest();
-    Scanner scanner = new Scanner(System.in);
-    System.out.println("First name: ");
-    firstName=scanner.nextLine();
-    System.out.println("Last name: ");
-    lastName=scanner.nextLine();
-    System.out.println("Address: ");
-    address=scanner.nextLine();
-    System.out.println("Telephone: ");
-    telephone=scanner.nextInt();
+    public Guest createGuest() {
+        //Guest guest = new Guest();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("First name: ");
 
-    return this;
+        while (!scanner.hasNext("[A-Za-z]+")) {
+            System.out.println("Please input only letters");
+            firstName = scanner.nextLine();
+        }
+        scanner.nextLine();
+        System.out.println("Last name: ");
+
+        while (!scanner.hasNext("[A-Za-z]+")) {
+            //  lastName = scanner.nextLine();
+            System.out.println("Please input only letters");
+            lastName = scanner.nextLine();
+        }
+            scanner.nextLine();
+            System.out.println("Address: ");
+            address = scanner.nextLine();
+
+//            scanner.nextInt();
+        System.out.println("Telephone: ");
+// to do
+//        while(!scanner.hasNextInt()) {
+//            System.out.println("Enter only numbers");
+//            telephone = scanner.nextInt();
+//        }
+        return this;
+    }
 //    try{
 //        FileInputStream f =new FileInputStream("guests.bin");
 //        ObjectInputStream o = new ObjectInputStream(f);
@@ -45,7 +62,7 @@ public class Guest   implements Serializable   {
 //    catch (IOException e) {
 //        e.printStackTrace();
 //    }
-    }
+
 
     @Override
     public String toString() {
