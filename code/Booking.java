@@ -38,7 +38,7 @@ public class Booking implements Serializable {
     public void setBookingNumber(int bookingNumber) {
         this.bookingNumber = bookingNumber;
     }
-        ArrayList<Booking> bookings =new ArrayList<Booking>();
+        //ArrayList<Booking> bookings =new ArrayList<Booking>();
 
     public String getStartDate() {
         return startDate;
@@ -134,7 +134,7 @@ public class Booking implements Serializable {
         System.out.println(Math.abs(daysBetween));
 
 
-        System.out.println(this);
+        System.out.println(receipt());
         return this;
     }
 
@@ -175,6 +175,24 @@ if(booking == bookingNumber) {
 
     }
 
+
+    public String receipt() {
+        System.out.println("      RECEIPT               ");
+        System.out.println("      -------               ");
+        System.out.println("  Receipt#" + bookingNumber +"                   ");
+        System.out.println("  Receipt Date "+endDate+"                   ");
+        System.out.println("______________________________                     ");
+        System.out.println("  Booked by                   ");
+        System.out.println("  "+guest+"                   ");
+        System.out.println("______________________________                     ");
+        System.out.println("  Description                   ");
+        System.out.println("  "+room+"                   ");
+        System.out.println("  Number of nights "+daysBetween+"                           ");
+        System.out.println("______________________________                     ");
+        System.out.println("Grand total                 "+daysBetween*room.getPricePerNight()+"DKK          ");
+
+        return "";
+    }
 
     @Override
     public String toString() {

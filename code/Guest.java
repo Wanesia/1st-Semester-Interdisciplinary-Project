@@ -53,8 +53,7 @@ public class Guest   implements Serializable   {
                 "First name: " + firstName + "\n" +
                 "Last name: " + lastName + "\n" +
                 "Address: " + address + "\n" +
-                "Telephone: " + telephone + "\n"+
-                "\n";
+                "Telephone: " + telephone + "\n";
     }
 
     /**
