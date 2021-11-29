@@ -1,4 +1,5 @@
 import java.awt.print.Book;
+import java.io.Serializable;
 import java.sql.SQLOutput;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 import java.time.temporal.ChronoUnit;
 
 
-public class Booking extends Database {
+public class Booking implements Serializable {
 
     private String startDate;
     private String endDate;
@@ -74,7 +75,7 @@ public class Booking extends Database {
         Scanner scan = new Scanner(System.in);
         System.out.println("Please type in the room number: ");
         int roomNumber = scan.nextInt();
-        for (Room room : roomArray) {
+        for (Room room : roomList) {
             if (room != null && roomNumber == room.getRoomNumber()) {
                 this.room = room;
                 room.setBooked(true);
