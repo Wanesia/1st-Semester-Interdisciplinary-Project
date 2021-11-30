@@ -2,44 +2,54 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.SortedMap;
+import java.util.InputMismatchException;
 
-public class Guest   implements Serializable   {
+public class Guest  implements Serializable {
     private String firstName;
     private String lastName;
     private String address;
-    private int telephone;
+    private String telephone;
 //    ArrayList<Guest>guests=new ArrayList<>();
-    
+private static final long serialVersionUID = 1234;
     public Guest createGuest() {
         //Guest guest = new Guest();
         Scanner scanner = new Scanner(System.in);
+
         System.out.println("First name: ");
-
-        while (!scanner.hasNext("[A-Za-z]+")) {
+        String input = scanner.nextLine();
+        while (!input.matches("[A-Za-z]+")) {
             System.out.println("Please input only letters");
-            firstName = scanner.nextLine();
+            input = scanner.nextLine();
         }
-        scanner.nextLine();
+        firstName = input;
+
         System.out.println("Last name: ");
+        String input1=scanner.nextLine();
 
-        while (!scanner.hasNext("[A-Za-z]+")) {
-            //  lastName = scanner.nextLine();
+            while (!input1.matches("[A-Za-z]+")) {
             System.out.println("Please input only letters");
-            lastName = scanner.nextLine();
+            input1=scanner.nextLine();
         }
-            scanner.nextLine();
-            System.out.println("Address: ");
-            address = scanner.nextLine();
+        lastName = input1;
+       // scanner.nextLine();
 
-//            scanner.nextInt();
+        System.out.println("Address: ");
+        address = scanner.nextLine();
+
         System.out.println("Telephone: ");
-// to do
-//        while(!scanner.hasNextInt()) {
+        String input2 = scanner.nextLine();
+        while (input2.matches("[A-Za-z]+")) {
+            System.out.println("Please input only numbers");
+            input2 = scanner.nextLine();
+        }
+        telephone=input2;
+//        while (!input1== ) {
 //            System.out.println("Enter only numbers");
-//            telephone = scanner.nextInt();
+//            telephone=scanner.nextInt();
 //        }
-        return this;
-    }
+       return this;
+   }
+
 //    try{
 //        FileInputStream f =new FileInputStream("guests.bin");
 //        ObjectInputStream o = new ObjectInputStream(f);
@@ -118,14 +128,14 @@ public class Guest   implements Serializable   {
     /**
      * @return int return the telephone
      */
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
     /**
      * @param telephone the telephone to set
      */
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 

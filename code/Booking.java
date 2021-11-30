@@ -18,6 +18,7 @@ import java.time.temporal.ChronoUnit;
 
 
 public class Booking implements Serializable {
+    private static final long serialVersionUID = 1234;
 
     private String startDate;
     private String endDate;

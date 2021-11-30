@@ -11,8 +11,6 @@ public class Database implements Serializable  {
 
     private int bookingNumber = rand.nextInt(1000);;
 
-
-
     public int getBookingNumber() {
         return bookingNumber;
     }
@@ -152,8 +150,8 @@ public class Database implements Serializable  {
                 guest.setAddress(scann.next());
                 System.out.println(guest.getAddress());
                 System.out.println("Change phone number: ");
-                int ss;
-                ss = scann.nextInt();
+                String ss;
+                ss = scann.nextLine();
                 guest.setTelephone(ss);
                 System.out.println(guest.getTelephone());
                 System.out.println("\n" + guest);
