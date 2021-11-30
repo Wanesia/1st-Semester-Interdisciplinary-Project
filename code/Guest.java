@@ -3,14 +3,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.SortedMap;
 import java.util.InputMismatchException;
-
 public class Guest  implements Serializable {
+    private static final long serialVersionUID = -3971986109222559602L;
     private String firstName;
     private String lastName;
     private String address;
     private String telephone;
 //    ArrayList<Guest>guests=new ArrayList<>();
-private static final long serialVersionUID = 1234;
     public Guest createGuest() {
         //Guest guest = new Guest();
         Scanner scanner = new Scanner(System.in);

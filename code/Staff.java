@@ -3,20 +3,19 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Staff  implements Serializable  {
+    private static final long serialVersionUID = -3971986109222559602L;
     private String title;
     private String firstName;
     private String lastName;
-    private int telephone;
+    private String telephone;
     private double salary;
-   @Serial
-    private static final long serialVersionUID = 1234;
 
 
     public Staff() {
 
     }
 
-    public Staff(String title, String firstName, String lastName, int telephone, double salary) {
+    public Staff(String title, String firstName, String lastName, String telephone, double salary) {
         this.title = title;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -63,7 +62,7 @@ public class Staff  implements Serializable  {
         System.out.println("Last Name: ");
         setLastName(scan.next());
         System.out.println("Phone Number: ");
-        setTelephone(scan.nextInt());
+        setTelephone(scan.nextLine());
 
         System.out.println(this);
 
@@ -109,12 +108,12 @@ public class Staff  implements Serializable  {
     }
 
 
-    public int getTelephone() {
+    public String getTelephone() {
         return telephone;
     }
 
 
-    public void setTelephone(int telephone) {
+    public void setTelephone(String telephone) {
         this.telephone = telephone;
     }
 

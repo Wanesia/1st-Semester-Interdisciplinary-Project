@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Database implements Serializable  {
 
-    private static final long serialVersionUID = 1234;
+    private static final long serialVersionUID =-3971986109222559602L;
 
     Random rand = new Random();
 
@@ -88,15 +88,17 @@ public class Database implements Serializable  {
                     System.out.println("Please pick one of the available job titles");
                 }
 
-                int ss;
+                String ss;
                 System.out.println("");
                 System.out.println("Change phone number: ");
-                ss = scan.nextInt();
+                ss = scan.nextLine();
                 staff.setTelephone(ss);
                 System.out.println(staff.getTelephone());
                 System.out.println("Change Salary: ");
-                ss = scan.nextInt();
-                staff.setSalary(ss);
+                ss = scan.nextLine();
+                int sss=Integer.parseInt(ss);
+                staff.setSalary(sss);
+
                 System.out.println(staff.getSalary());
                 System.out.println("");
                 System.out.println(staff);
@@ -121,7 +123,7 @@ public class Database implements Serializable  {
 
     public void displayGuest() {
         try {
-            FileInputStream fileIn = new FileInputStream("guests.ser");
+            FileInputStream fileIn = new FileInputStream("Guests.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             guests = (ArrayList<Guest>) in.readObject();
             System.out.println(guests.size());

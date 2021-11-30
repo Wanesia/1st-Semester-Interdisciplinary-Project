@@ -14,7 +14,6 @@ import java.time.temporal.ChronoUnit;
 public class  Main{
     public static void main(String[] args) throws IOException, ParseException, ClassNotFoundException {
 
-
         Booking booking = new Booking();
         Database database = new Database();
         //Add rooms to roomArray
@@ -24,7 +23,7 @@ public class  Main{
         database.roomArray.add(database.doubleBed2);
         database.roomArray.add(database.suite1);
         database.roomArray.add(database.suite2);
-
+//        database.serializeRoom();
 
         Room r = new Room();
         //database.serializeRoom();
@@ -63,6 +62,7 @@ public class  Main{
                     guest.createGuest();
                     database.guests.add(guest);
                     database.serializeGuests();
+
                     database.displayRoom();
                     booking.bookRoom(database.roomArray, database.guests);
                     database.bookings.add(booking);
