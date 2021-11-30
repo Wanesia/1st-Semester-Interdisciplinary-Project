@@ -88,6 +88,7 @@ public class  Main{
                     booking.extendBooking();
                     database.serializeBooking();
                     database.displayBooking();
+                    booking.receipt();
 
                     break;
                 }
