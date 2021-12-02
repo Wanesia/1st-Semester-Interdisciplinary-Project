@@ -228,6 +228,8 @@ public class Database implements Serializable  {
         }
 
     public void displayRoom() {
+        System.out.println("┌───── •✧✧• ─────┐\n DISPLAYING ROOMS \n└───── •✧✧• ─────┘\n");
+        System.out.println("»»————　★　————««");
         try {
             FileInputStream fileIn = new FileInputStream("Room.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);

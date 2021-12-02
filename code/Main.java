@@ -62,7 +62,6 @@ public class  Main{
                     guest.createGuest();
                     database.guests.add(guest);
                     database.serializeGuests();
-
                     database.displayRoom();
                     booking.bookRoom(database.roomArray, database.guests);
                     database.bookings.add(booking);
